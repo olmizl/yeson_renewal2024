@@ -1,0 +1,193 @@
+/* ===================--- root 설정 ===================---  */
+:root{
+    --fontsize: 18px;
+}
+/* ===================--- root 설정 ===================---  */
+
+/* ===================--- skip header 설정 ===================--- */
+#skip {position: relative;}
+#skip a{position: absolute; left : 0px; top:-45px; border : 1px solid #fff; color : #fff; background: #333; line-height: 30px;text-align: center; z-index: 1000000000; width:100%; font-size:15px ; height: 40px; line-height: 40px;}
+#skip a:active,
+#skip a:focus {top :0;}
+@keyframes text-shadow-drop-top {
+    0% {text-shadow: 0 0 0 rgba(0, 0, 0, 0);}
+    100% {text-shadow: 0 -6px 18px rgba(0, 0, 0, 0.35);}
+}
+/* ===================--- skip header 설정 ===================--- */
+
+
+
+/* ===================--- popup 설정 new!!!!!!!!!!!! ===================--- */
+.pu_pop .swiper-navi .swiper-button-prev:after {content: "\e93c"; font-family: 'xeicon' !important;font-size: 18px;}
+.pu_pop .swiper-navi .swiper-button-next:after {content: "\e93f"; font-family: 'xeicon' !important;font-size: 18px;}
+.pu_pop .btn_box a:hover { background-color: #fff; color: #000 !important; font-weight: 500; box-shadow: 3px 3px 0px #ffffff94;}
+.pu_pop .swiper-slide figure::-webkit-scrollbar {width: 3px;}
+.pu_pop .swiper-slide figure::-webkit-scrollbar-thumb { background-color:#d56d10;border-radius: 30px;}
+.pu_pop .swiper-slide figure::-webkit-scrollbar-track { background-color:#39393980 }
+.pu_pop .swiper-navi > div {transition: all 0.2s ease-out;}
+.pu_pop .swiper-navi > div:hover { box-shadow: inset 0px 0px 16px #ffffff6e;}
+.pu_pop figure p:has(img) { width: 100%; height: 100%;}
+.pu_pop figure img { height: 100%;}
+#pop_floating {display: none !important; visibility: hidden !important; }
+#pop_floating.visible {display: flex !important; visibility: visible !important;opacity: 0; scale: 0.5; animation: pop_floating_ani 1s ease-in-out 1 forwards;} 
+@keyframes pop_floating_ani {100%{opacity: 1; scale: 1;}}
+
+@media screen and (max-width:1024px) {
+    #pop_floating {width: 34px !important; height: 34px !important;}
+    #pop_floating i{font-size: 16px !important;}
+    .pu_pop .popup_conbox .popup_list,
+    .pu_pop .popup_conbox .top { padding-bottom: 13px !important ; margin-bottom: 13px;}
+}
+@media screen and (max-width:767px) {
+    #pop_floating {top: 85px !important;}
+}
+@media screen and (max-width:760px) {
+    .pu_pop .swiper-slide {height: 46.0526vw !important;}
+    .popup_con {width: 90% !important;}
+}
+@media screen and (max-width:640px) {
+    .popup_con .top strong { font-size: 7vw !important;}
+    .popup_con .top div { font-size: 16px;}
+    .popup_con {height: 90%; overflow-y: auto;}   
+    .popup_con .btn_box a { height: 35px !important;padding: 5px 15px !important; font-size: 15px !important;}
+    .popup_con .swiper-button-prev ,
+    .popup_con .swiper-button-next { width: 40px !important; height: 35px !important;}
+}
+
+@media screen and (max-height:525px) {
+    .popup_con {height: 90%; overflow-y: auto;}   
+}
+
+@media screen and (max-width:480px) {
+    .pu_pop .swiper-slide {height: 90vw !important;}
+}
+
+@media screen and (max-width:400px) {
+
+    .popup_con .swiper-navi ,
+    .popup_con .btn_box {gap:5px !important}
+    .popup_con .swiper-button-prev ,
+    .popup_con .swiper-button-next { width: 32px !important; height: 30px !important;}
+    .popup_con .btn_box a {padding: 5px 10px !important; font-size: 13px !important; height: 30px !important;}
+}
+
+
+/* ===================--- reset css 설정 ===================--- */
+body,html { font-size: var(--fontsize);}
+body { margin: 0; width: 100%; height: 100%; line-height: 1; box-sizing: border-box; overflow:hidden visible;}
+body.scrollno { overflow: hidden hidden ;}
+* {box-sizing: border-box;}
+h1{margin: 0;}
+.effect_title { text-align: center; color: #fff;animation: text-shadow-drop-top 0.6s both; background-color: #e7e7e7; padding: 20px;}
+em { font-style: normal;}
+figure img ,img {vertical-align: middle; max-width: 100%;}
+textarea { resize: none;}
+button { padding: 0; border: none; outline: none; margin:0;background-color: transparent; font-family: inherit ; font-size: inherit; font-weight: inherit;}
+table { width: 100%;}
+
+html, body, div, span, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, em, img, ins, kbd, q, samp,small, strong, sub, sup, var,b, i,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,time, mark, audio, video {margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { display:block;}
+
+nav ul {list-style:none;}
+ul,ol{list-style: none;}
+/* 2020/02/19 ul,ol list-style: none; 추가 */
+
+blockquote, q {quotes:none;}
+
+blockquote:before, blockquote:after,
+q:before, q:after {content:'';content:none;}
+
+a {margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent;text-decoration: none;outline: none; }
+
+ins {background-color:#ff9;color:#000;text-decoration:none;}
+
+mark {background-color:#ff9;color:#000; font-style:italic;font-weight:bold;}
+
+del {text-decoration: line-through;}
+
+abbr[title], dfn[title] {border-bottom:1px dotted;cursor:help;}
+
+table { border-collapse: collapse;border-spacing: 0;table-layout: fixed;}
+
+
+hr {display:block;height:1px;border:0;   margin:1em 0;padding:0;}
+/* 2020/05/11 border-style: none; 추가 */
+input, select {vertical-align:middle;border-style: none; margin: 0;}
+/* 2021/01/13 추가 (팝업) */
+.pu_pop{table-layout:fixed; box-sizing:border-box;}
+.pu_pop img{width:100%; max-width:100%;}
+/* 2021/01/28 추가 ios input요소 설정 */
+input[type=submit], select {-webkit-appearance:none;}
+input[type=submit], input[type=text], textarea, select{ -webkit-border-radius: 0;}
+
+/* 2022/11/21 address font-style추가  */
+address{font-style: inherit;}
+
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video {margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;vertical-align: baseline;background: transparent;}
+
+body {line-height: 1;}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {display: block;}
+
+nav ul {list-style: none;}
+
+ul,ol {list-style: none;}
+
+blockquote,q {quotes: none;}
+
+blockquote:before,blockquote:after,q:before,q:after {content: '';content: none;}
+
+a {margin: 0;padding: 0;font-size: 100%;vertical-align: baseline;background: transparent;text-decoration: none;outline: none;color: #000;}
+
+ins {background-color: #ff9;color: #000;text-decoration: none;}
+
+mark {background-color: #ff9;color: #000;font-style: italic;font-weight: bold;}
+
+del {text-decoration: line-through;}
+
+abbr[title],
+dfn[title] {border-bottom: 1px dotted;cursor: help;}
+
+table {border-collapse: collapse;border-spacing: 0;}
+
+hr {display: block;height: 1px;border: 0;margin: 1em 0;padding: 0;}
+
+/* 2020/05/11 border-style: none; 추가 */
+input,
+select {vertical-align: middle;border-style: none;}
+
+/* 2021/01/13 추가 (팝업) */
+.pu_pop {table-layout: fixed;box-sizing: border-box;}
+
+.pu_pop img {width: 100%;max-width: 100%;}
+
+.pu_pop input {-webkit-appearance: checkbox;}
+
+/* 2021/01/28 추가 ios input요소 설정 */
+input[type=submit],
+select {-webkit-appearance: none;}
+
+input[type=submit],input[type=text],textarea,select {-webkit-border-radius: 0;}
+address {font-style: inherit;}
+
+@media screen and (max-width:1280px) {
+    :root{
+        --fontsize: 16px;
+    }
+}
+
+@media screen and (max-width:1024px) {
+    :root{
+        --fontsize: 15px;
+    }
+}
+
+@media screen and (max-width:640px) {
+    :root{
+        --fontsize: 14px;
+    }
+}
+
+/* ===================--- reset css 설정  end ===================--- */

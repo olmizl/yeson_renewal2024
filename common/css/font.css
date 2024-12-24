@@ -1,0 +1,53 @@
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 100;
+	src: url('/common/font/SUIT/SUIT-Thin.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 200;
+	src: url('/common/font/SUIT/SUIT-ExtraLight.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 300;
+	src: url('/common/font/SUIT/SUIT-Light.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 400;
+	src: url('/common/font/SUIT/SUIT-Regular.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 500;
+	src: url('/common/font/SUIT/SUIT-Medium.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 600;
+	src: url('/common/font/SUIT/SUIT-SemiBold.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 700;
+	src: url('/common/font/SUIT/SUIT-Bold.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 800;
+	src: url('/common/font/SUIT/SUIT-ExtraBold.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 900;
+	src: url('/common/font/SUIT/SUIT-Heavy.woff2') format('woff2');
+}
+
+
+/* ================aritaum-dotum============== */
+@font-face {
+	font-family: 'AritaDotumKR-Bold';
+	font-weight: normal;
+	src: url('/common/font/AritaDotumKR/AritaDotumKR-Bold.ttf') format('truetype');
+}
