@@ -1,0 +1,971 @@
+<!-- <?php
+session_start();
+include "{$_SERVER['DOCUMENT_ROOT']}/lib/common.php";
+include "{$Path_Manager}/lib/config.php";
+
+$og_image_ext = explode(".", $basic_row->og_image);
+$og_image_Extension = $og_image_ext[sizeof($og_image_ext)-1];
+
+?> -->
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no" >
+	<link rel="shortcut icon" type="image/favicon" href="favicon.ico">
+    <!-- 네이버웹마스터도구설정 -->
+    <!-- <title><?=$basic_row->title;?></title> -->
+    <meta name="naver-site-verification" content="<?=$basic_row->verification_naver;?>">
+    <meta name="google-site-verification" content="<?=$basic_row->verification_google;?>">
+    <meta name="description" content="<?=$basic_row->description;?>">
+    <meta property="og:title" content="<?=$basic_row->title;?>">
+    <meta property="og:description" content="<?=$basic_row->description;?>">
+    <meta name="twitter:title" content="<?=$basic_row->title;?>">
+    <meta name="twitter:description" content="<?=$basic_row->description;?>">
+    <!-- <?if($basic_row->og_image){?><meta property="og:image" content="./images/<?=$basic_row->og_image;?>?time=<?=time();?>"><?}?> -->
+    <!-- 네이버웹마스터도구설정 -->
+
+    <!-- kakao map -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f8d9512cca07cd80a4293b0006e0e609"></script>
+    <script charset="UTF-8" src="https://t1.daumcdn.net/mapjsapi/js/main/4.4.12/kakao.js"></script>
+
+
+    <!-- IE에서 작동 -->
+    <script src="https://sinseiki.github.io/noIE.js/noIE.js" ></script>
+    <script>noIE('해당 웹사이트는 Explorer 브라우저에서 정상 작동이 어렵습니다. Chrome, Edge 브라우저 사용을 권장 드립니다.')</script>
+    <!-- IE에서 작동 -->
+    <!-- # font poppins# -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- # css # -->
+    <link rel="stylesheet" href="/common/css/reset.css">
+    <link rel="stylesheet" href="/common/css/layout.css">
+    <link rel="stylesheet" href="/common/css/common.css">
+    <link rel="stylesheet" href="/common/css/sub.css">
+    <link rel="stylesheet" href="/common/css/aos.css">
+    <link rel="stylesheet" href="/common/css/font.css">
+    <link rel="stylesheet" href="/common/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/common/XEIcon-master/xeicon.min.css">
+    <!-- # js # -->
+    <script src="/common/js/jquery-3.7.1.min.js"></script>
+    <script src="/common/js/layout.js"></script>
+    <script src="/common/js/sub.js"></script>
+    <script src="/common/js/swiper-bundle.min.js"></script>
+    <script src="/common/js/popup.js"></script>
+    <script src="/common/js/aos.js"></script>
+    <!-- # GSAP SCRIPT # -->
+    <script src="/common/js/lenis.min.js"></script> 
+    <script src="/common/js/gsap.min.js"></script> 
+    <script src="/common/js/ScrollTrigger.min.js"></script> 
+    <script src="/common/js/ScrollToPlugin.min.js"></script> 
+    <script src="/common/js/TweenMax.min.js"></script> 
+
+
+
+</head>
+<body>
+    <div class="wrap" >
+        <div id="skip">
+            <a href="#contents">메인 콘텐츠 바로가기</a>
+        </div>                  
+        <header class="header ">
+            <div class="header_wrap">
+                <div class="header_inner">
+                    <h1 class="logo">
+                        <a href="main">
+                           <img src="/images/yeson_logo.svg" alt="YESON communication" class="logo_img">
+                        </a>
+                    </h1>
+                    <div class="header_button">
+                        <div class="micro">
+                            <a href="https://micro.yesoni.kr/" target="_blank" class="micro_btn">
+                                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_131_1785)">
+                                    <path d="M28.8234 14.7004C28.5075 14.7004 28.2433 14.8121 28.0363 15.0381C27.8266 15.2642 27.7231 15.591 27.7231 16.0212C27.7231 16.4515 27.8266 16.7702 28.0309 16.9989C28.2351 17.2277 28.4938 17.3393 28.8043 17.3393C29.1148 17.3393 29.3789 17.2249 29.5968 16.9989C29.8146 16.7702 29.9236 16.4461 29.9236 16.0212C29.9236 15.5964 29.8174 15.2723 29.605 15.0436C29.3925 14.8148 29.1311 14.7032 28.8206 14.7032L28.8234 14.7004Z" fill="#0C0B09"/>
+                                    <path d="M30.6781 0H4.3219C1.93627 0 0 1.93627 0 4.3219V30.6754C0 33.0637 1.93627 34.9973 4.3219 34.9973H30.6754C33.0637 34.9973 34.9973 33.061 34.9973 30.6754V4.3219C34.9973 1.93355 33.061 0 30.6754 0H30.6781ZM12.6498 18.6683H11.0376V15.7925C11.0376 15.4521 10.9477 15.1879 10.768 15C10.5882 14.8148 10.3404 14.7195 10.0218 14.7195C9.70316 14.7195 9.45806 14.8121 9.2756 15C9.09586 15.1879 9.00599 15.4521 9.00599 15.7925V18.6683H7.39379V15.7925C7.39379 15.4521 7.30392 15.1879 7.12418 15C6.94444 14.8148 6.69662 14.7195 6.378 14.7195C6.05937 14.7195 5.81427 14.8121 5.63181 15C5.45207 15.1879 5.3622 15.4521 5.3622 15.7925V18.6683H3.73911V13.3715H5.3622V14.0359C5.5256 13.8154 5.74074 13.6383 6.00763 13.5103C6.27451 13.3796 6.57407 13.317 6.90904 13.317C7.30664 13.317 7.6634 13.4014 7.97658 13.573C8.28976 13.7446 8.53486 13.9869 8.71187 14.3028C8.89433 14.0114 9.14488 13.7745 9.46078 13.592C9.77669 13.4096 10.1225 13.317 10.4956 13.317C11.1547 13.317 11.6776 13.5158 12.067 13.9161C12.4564 14.3137 12.6498 14.8693 12.6498 15.5773V18.671V18.6683ZM15.4112 18.6683H13.7881V13.3715H15.4112V18.6683ZM15.2914 12.5708C15.1117 12.7397 14.8829 12.8214 14.6024 12.8214C14.3219 12.8214 14.085 12.7369 13.9052 12.5708C13.7255 12.402 13.6356 12.195 13.6356 11.9499C13.6356 11.7048 13.7255 11.4869 13.9052 11.3181C14.085 11.1492 14.3192 11.0675 14.6024 11.0675C14.8856 11.0675 15.1089 11.152 15.2914 11.3181C15.4711 11.4869 15.561 11.6966 15.561 11.9499C15.561 12.2032 15.4711 12.4047 15.2914 12.5708ZM18.1835 17.0125C18.3606 17.244 18.5975 17.3584 18.8943 17.3584C19.311 17.3584 19.5942 17.1569 19.7386 16.7511H21.4651C21.3263 17.372 21.0321 17.8595 20.5828 18.2135C20.1334 18.5675 19.5806 18.7446 18.9216 18.7446C18.4014 18.7446 17.9412 18.6329 17.5408 18.4123C17.1378 18.1917 16.8246 17.8758 16.6013 17.4646C16.3753 17.0534 16.2636 16.5714 16.2636 16.0212C16.2636 15.4711 16.3753 14.9891 16.6013 14.5779C16.8246 14.1667 17.1378 13.8508 17.5408 13.6275C17.9439 13.4069 18.4041 13.2952 18.9216 13.2952C19.5861 13.2952 20.1416 13.4695 20.5882 13.8181C21.0349 14.1667 21.3263 14.6569 21.4651 15.2887H19.7386C19.5942 14.8829 19.311 14.6814 18.8943 14.6814C18.5975 14.6814 18.3606 14.7958 18.1835 15.0272C18.0065 15.2587 17.9167 15.5882 17.9167 16.0185C17.9167 16.4488 18.0065 16.7783 18.1835 17.0098V17.0125ZM25.6155 15.0327H25.1688C24.7631 15.0327 24.4608 15.1198 24.2565 15.2941C24.055 15.4684 23.9515 15.7734 23.9515 16.2092V18.6683H22.3284V13.3715H23.9515V14.2538C24.1422 13.9624 24.3791 13.7337 24.6623 13.5648C24.9483 13.396 25.2642 13.3143 25.6127 13.3143V15.0327H25.6155ZM31.2091 17.4592C30.9668 17.8731 30.6318 18.1917 30.2124 18.4123C29.793 18.6329 29.3219 18.7446 28.8045 18.7446C28.287 18.7446 27.8186 18.6329 27.4047 18.4123C26.9907 18.1917 26.6639 17.8758 26.427 17.4646C26.1901 17.0534 26.0703 16.5714 26.0703 16.0212C26.0703 15.4711 26.1901 14.9973 26.4297 14.5833C26.6694 14.1694 26.9989 13.8508 27.4156 13.6302C27.8322 13.4096 28.3007 13.2979 28.8208 13.2979C29.341 13.2979 29.8066 13.4096 30.226 13.6302C30.6427 13.8508 30.9722 14.1694 31.2119 14.5833C31.4515 14.9973 31.5714 15.4766 31.5714 16.0212C31.5714 16.5659 31.4488 17.0452 31.2064 17.4592H31.2091Z" fill="#0C0B09"/>
+                                    </g>
+                                    <defs>
+                                    <clipPath id="clip0_131_1785">
+                                    <rect width="35" height="35" fill="white"/>
+                                    </clipPath>
+                                    </defs>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="sitemap">
+                            <button type="button" class="sitemap_btn">
+                                <em class="bar bar01"><i class="bar01_01"></i><i class="bar01_02"></i></em>
+                                <em class="bar bar02"><i class="bar02_01"></i><i class="bar02_02"></i></em>
+                            </button>
+                            <div class="sitemap_wrap">
+                                <div class="cont">
+                                    <div class="box">
+                                        <div class="left">
+                                            <ul class="list">
+                                                <li data-nav="nav01">
+                                                    <a href="portfolio.html" class="ft_pp">
+                                                        <p class="t3xts t3xt-1" data-t3xt="PORTFOLIO">PORTFOLIO</p>
+                                                    </a>
+                                                </li>
+                                                <li data-nav="nav02">
+                                                    <a href="about.html" class="ft_pp">
+                                                        <p class="t3xts t3xt-1" data-t3xt="ABOUT">ABOUT</p>
+                                                    </a>
+                                                </li>
+                                                <li data-nav="nav03">
+                                                    <a href="contact.html" class="ft_pp">
+                                                        <p class="t3xts t3xt-1" data-t3xt="INQUIRY">INQUIRY</p>
+                                                    </a>
+                                                </li>
+                                                <li data-nav="nav04">
+                                                    <a href="notice.html" class="ft_pp">
+                                                        <p class="t3xts t3xt-1" data-t3xt="NOTICE">NOTICE</p>
+                                                    </a>
+                                                </li>
+                                                <li data-nav="nav05">
+                                                    <a href="recruit.html" class="ft_pp">
+                                                        <p class="t3xts t3xt-1" data-t3xt="RECRUITMENT">RECRUITMENT</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="left_txt">
+                                                <a href="mailto:webmaster@yesoni.co.kr">webmaster@yesoni.co.kr</a>
+                                                <a href="javascript:;"><b>빠른상담</b></a>
+                                                <a href="javascript:;">견적문의</a>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <div class="cube_container">
+                                                <div class="cube">
+                                                    <div class="face siteimg00"><img src="/images/sitemap_img00.png" alt="image"></div>
+                                                    <div class="face siteimg01"><img src="/images/sitemap_img01.jpg" alt="image"></div>
+                                                    <div class="face siteimg02"><img src="/images/sitemap_img02.png" alt="image"></div>
+                                                    <div class="face siteimg03"><img src="/images/sitemap_img03.png" alt="image"></div>
+                                                    <div class="face siteimg04"><img src="/images/sitemap_img04.png" alt="image"></div>
+                                                    <div class="face siteimg05"><img src="/images/sitemap_img05.png" alt="image"></div>
+                                                </div>
+                                            </div>
+                                            <div class="right_link">
+                                                <a href="https://open.kakao.com/o/sMGNEn9c" target="_blank" class="sitemap_sns_kakao">
+                                                    <p>
+                                                        <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M9 0.160156C10.1458 0.160156 11.2266 0.335938 12.2422 0.6875C13.2578 1.03906 14.1432 1.51432 14.8984 2.11328C15.6536 2.71224 16.2461 3.41536 16.6758 4.22266C17.1185 5.02995 17.3398 5.88932 17.3398 6.80078C17.3398 7.72526 17.1185 8.59115 16.6758 9.39844C16.2461 10.1927 15.6536 10.8958 14.8984 11.5078C14.1432 12.1068 13.2578 12.582 12.2422 12.9336C11.2266 13.2721 10.1458 13.4414 9 13.4414C8.72656 13.4414 8.45964 13.4349 8.19922 13.4219C7.9388 13.3958 7.6849 13.3633 7.4375 13.3242L3.82422 15.6289L4.44922 12.3672C3.88932 12.0677 3.375 11.7227 2.90625 11.332C2.4375 10.9284 2.03385 10.4922 1.69531 10.0234C1.36979 9.54167 1.11589 9.03385 0.933594 8.5C0.751302 7.95312 0.660156 7.38672 0.660156 6.80078C0.660156 5.88932 0.875 5.02995 1.30469 4.22266C1.7474 3.41536 2.34635 2.71224 3.10156 2.11328C3.85677 1.51432 4.74219 1.03906 5.75781 0.6875C6.77344 0.335938 7.85417 0.160156 9 0.160156Z" fill="#2C2C2C"/>
+                                                        </svg>
+                                                    </p>
+                                                </a>
+                                                <a href="https://open.kakao.com/o/sMGNEn9c" target="_blank" class="sitemap_sns_insta"><p><i class="xi-instagram"></i></p></a>
+                                                <a href="https://open.kakao.com/o/sMGNEn9c" target="_blank" class="sitemap_sns_blog">
+                                                    <p>
+                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M4.80629 8.24414C4.60654 8.24414 4.42898 8.32285 4.29581 8.46903C4.15155 8.61521 4.08496 8.79512 4.08496 9.00876C4.08496 9.2224 4.15155 9.39107 4.29581 9.54849C4.44008 9.69467 4.60654 9.77338 4.80629 9.77338C5.00605 9.77338 5.1836 9.69467 5.32787 9.54849C5.47214 9.40231 5.54982 9.2224 5.54982 9.00876C5.54982 8.79512 5.47214 8.61521 5.32787 8.46903C5.1836 8.31161 5.01714 8.24414 4.80629 8.24414Z" fill="#2C2C2C"/>
+                                                        <path d="M11.0319 8.23291C10.8321 8.23291 10.6546 8.31162 10.5214 8.4578C10.3771 8.60397 10.3105 8.78388 10.3105 8.99753C10.3105 9.21117 10.3771 9.37984 10.5214 9.53726C10.6657 9.68343 10.8321 9.76215 11.0319 9.76215C11.2316 9.76215 11.4092 9.68343 11.5535 9.53726C11.6977 9.39108 11.7754 9.21117 11.7754 8.99753C11.7754 8.78388 11.6977 8.61522 11.5535 8.4578C11.4203 8.30038 11.2427 8.23291 11.0319 8.23291Z" fill="#2C2C2C"/>
+                                                        <path d="M15.1935 8.24414C14.9937 8.24414 14.8162 8.32285 14.683 8.46903C14.5388 8.61521 14.4722 8.79512 14.4722 9.00876C14.4722 9.2224 14.5388 9.39107 14.683 9.54849C14.8273 9.69467 14.9937 9.77338 15.1935 9.77338C15.3933 9.77338 15.5708 9.69467 15.7151 9.54849C15.8594 9.40231 15.937 9.2224 15.937 9.00876C15.937 8.79512 15.8594 8.61521 15.7151 8.46903C15.5708 8.31161 15.3933 8.24414 15.1935 8.24414Z" fill="#2C2C2C"/>
+                                                        <path d="M17.0358 2.68945H2.96424C1.88779 2.68945 1 3.589 1 4.67971V12.7419C1 13.8326 1.88779 14.7322 2.96424 14.7322H8.49075C8.49075 14.7322 9.5561 17.6895 9.94451 17.6895C10.3329 17.6895 11.4871 14.7322 11.4871 14.7322H17.0358C18.1122 14.7322 19 13.8326 19 12.7419V4.67971C19 3.589 18.1122 2.68945 17.0358 2.68945ZM6.22688 10.1332C5.94945 10.4481 5.51665 10.583 5.05055 10.583C4.62885 10.583 4.31813 10.4593 4.09618 10.2794H4.08508V10.5043H3.03083V5.83788H4.08508V7.62574H4.10728C4.39581 7.37836 4.77312 7.29965 5.21702 7.27716C5.59433 7.26592 5.99383 7.50205 6.23798 7.78316C6.47102 8.06427 6.64858 8.5028 6.64858 8.98631C6.64858 9.51479 6.51541 9.81839 6.22688 10.1332ZM8.50185 10.5493H7.4254C7.4254 10.5493 7.4254 8.098 7.4254 7.65947C7.4254 6.99605 6.90382 6.9061 6.90382 6.9061V5.74792C6.90382 5.74792 8.41307 5.83788 8.50185 7.6932C8.50185 8.22169 8.50185 10.5493 8.50185 10.5493ZM12.73 9.66097C12.6412 9.87461 12.508 10.0545 12.3305 10.2232C12.164 10.3806 11.9642 10.5043 11.7423 10.5943C11.5203 10.6842 11.2873 10.7292 11.0432 10.7292C10.799 10.7292 10.566 10.6842 10.3551 10.5943C10.1332 10.5043 9.93342 10.3806 9.76695 10.2232C9.5894 10.0545 9.45623 9.86337 9.36745 9.66097C9.27867 9.45857 9.23428 9.23368 9.23428 8.99755C9.23428 8.76142 9.27867 8.54777 9.36745 8.33413C9.45623 8.13173 9.5894 7.94058 9.76695 7.77191C9.94451 7.61449 10.1332 7.4908 10.3551 7.40085C10.5771 7.31089 10.8101 7.26592 11.0432 7.26592C11.2873 7.26592 11.5203 7.31089 11.7423 7.40085C11.9642 7.4908 12.164 7.61449 12.3305 7.77191C12.508 7.94058 12.6301 8.12049 12.73 8.33413C12.8187 8.54777 12.8631 8.76142 12.8631 8.99755C12.8631 9.23368 12.8187 9.44732 12.73 9.66097ZM16.9692 10.122C16.9692 10.9428 16.8138 11.4376 16.4587 11.7862C16.0259 12.2022 15.4155 12.2247 14.9051 12.1572V11.3139C15.3379 11.3589 15.926 11.0665 15.926 10.5043V10.2907H15.9149C15.6708 10.628 15.3268 10.7517 14.8496 10.7517C14.4168 10.7517 14.0395 10.5943 13.7842 10.2907C13.529 9.98705 13.4069 9.58226 13.4069 9.07626C13.4069 8.5028 13.5512 8.05302 13.8286 7.71569C14.1171 7.37836 14.5166 7.22094 14.9827 7.22094C15.3933 7.22094 15.6597 7.32214 15.9149 7.55827H15.926V7.29965H16.9803V10.122H16.9692Z" fill="#2C2C2C"/>
+                                                        </svg>
+                                                    </p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header end -->
+        <div class="sub_wrap about_wrap">
+            <div class="about_main">
+                <div class="main_video">
+                    <div class="bg"></div>
+                    <video src="/images/sub/about_video.mp4" autoplay muted loop></video>
+                </div>
+                <div class="main_txt">
+                    <div class="big ft_pp">
+                        <div class="big01"><p><b class="b01">YES</b><em class="em01">,WE’RE</em> <b class="b02">ON</b> <em class="em02"> IT.</em></p></div>
+                        <div class="big02"><p><em class="em03">AND WE </em> <b class="b03">OWN</b> <em class="em04"> IT.</em></p></div>
+                    </div>
+                    <div class="small">
+                        <p><span>풍부한 경험과 노하우를 토대로 고객만족과 신뢰를 큰 자산으로 생각하는 기업입니다.</span>
+                            <span>각 분야 전문기술을 보유한 저희 구성원들은 항상 사용자의 입장으로 함께 고민하고</span>
+                            <span>유기적인 소통을 통해 최상의 퀄리티와 최적의 편리성이 보장되는 </span>
+                            <span>결과물을 제공하고자 합니다.</span>
+                            <br>
+                            <span>끊임없이 연구하며 발전을 도모하는 우리는 예손입니다.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="history">
+                <div class="history_wrap">
+                    <div class="history_list">
+                        <ul class="history_wrapper">
+                            <li class="history_slide" data-year="2024" data-name01="서울모빌리티쇼" data-name02="한국자동차모빌리티산업협회" data-website="mobilityshow.or.kr">
+                                <div class="year_box year_box0 now">
+                                    <p>2024</p>
+                                </div>
+                                <figure >
+                                    <img src="/images/sub/history_img01.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2024" data-name01="이엔플러스" data-name02="(주)이엔플러스" data-website="mobilityshow.or.kr">
+                                <figure>
+                                    <img src="/images/sub/history_img02.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2024" data-name01="한컴이노스트림" data-name02="(주)한컴이노스트림" data-website="mobilityshow.or.kr">
+                                <figure>
+                                    <img src="/images/sub/history_img03.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2023" data-name01="PMRC" data-name02="(주)PMRC" data-website="mobilityshow.or.kr">
+                                <div class="year_box year_box1">
+                                    <p>2023</p>
+                                </div>
+                                <figure>
+                                    <img src="/images/sub/history_img04.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2023" data-name01="DDP 디자인페어" data-name02="서울디자인재단" data-website="mobilityshow.or.kr">
+                                <figure>
+                                    <img src="/images/sub/history_img05.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2023" data-name01="Phaze" data-name02="(주)phaze" data-website="mobilityshow.or.kr">
+                                <figure>
+                                    <img src="/images/sub/history_img01.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2022" data-name01="앵거스박" data-name02="(주)앵거스박" data-website="mobilityshow.or.kr">
+                                <div class="year_box year_box2">
+                                    <p>2022</p>
+                                </div>
+                                <figure>
+                                    <img src="/images/sub/history_img02.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2022" data-name01="대한간이식학회" data-name02="(주)대한간이식학회" data-website="mobilityshow.or.kr">
+                                <figure>
+                                    <img src="/images/sub/history_img03.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2022" data-name01="APOA" data-name02="(주)APOA" data-website="mobilityshow.or.kr">
+                                <figure>
+                                    <img src="/images/sub/history_img04.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2021" data-name01="마이밀" data-name02="(주)마이밀" data-website="mobilityshow.or.kr">
+                                <div class="year_box year_box3">
+                                    <p>2021</p>
+                                </div>
+                                <figure>
+                                    <img src="/images/sub/history_img05.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2021" data-name01="K-컬처 스퀘어" data-name02="(주)K-컬처 스퀘어" data-website="mobilityshow.or.kr">
+                                <figure>
+                                    <img src="/images/sub/history_img01.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2021" data-name01="화성예술인DB" data-name02="화성예술인DB 아티스트라이브러리" data-website="mobilityshow.or.kr">
+                                <figure>
+                                    <img src="/images/sub/history_img02.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2020" data-name01="GREAT M" data-name02="(주)GREAT M" data-website="mobilityshow.or.kr">
+                                <div class="year_box year_box4">
+                                    <p>2020</p>
+                                </div>
+                                <figure>
+                                    <img src="/images/sub/history_img03.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2020" data-name01="H2MEET" data-name02="수소모빌리티쇼" data-website="mobilityshow.or.kr">
+                                <figure>
+                                    <img src="/images/sub/history_img04.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2020" data-name01="현빈 팬클럽 홈페이지" data-name02="현빈 팬클럽 홈페이지" data-website="mobilityshow.or.kr">
+                                <figure>
+                                    <img src="/images/sub/history_img05.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2019" data-name01="엘칸토" data-name02="(주)엘칸토" data-website="mobilityshow.or.kr">
+                                <div class="year_box year_box5">
+                                    <p>2019</p>
+                                </div>
+                                <figure>
+                                    <img src="/images/sub/history_img01.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2019" data-name01="서울모빌리티쇼" data-name02="한국자동차모빌리티산업협회" data-website="mobilityshow.or.kr">
+                                <figure>
+                                    <img src="/images/sub/history_img02.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2019" data-name01="서울모빌리티쇼" data-name02="한국자동차모빌리티산업협회" data-website="mobilityshow.or.kr">
+                                <figure>
+                                    <img src="/images/sub/history_img03.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2018" data-name01="서울모빌리티쇼" data-name02="한국자동차모빌리티산업협회" data-website="mobilityshow.or.kr">
+                                <div class="year_box year_box6">
+                                    <p>2018</p>
+                                </div>
+                                <figure>
+                                    <img src="/images/sub/history_img04.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2018" data-name01="서울모빌리티쇼" data-name02="한국자동차모빌리티산업협회" data-website="mobilityshow.or.kr">
+                                <figure>
+                                    <img src="/images/sub/history_img05.jpg" alt="background image">
+                                </figure>
+                            </li>
+                            <li class="history_slide" data-year="2018" data-name01="서울모빌리티쇼" data-name02="한국자동차모빌리티산업협회" data-website="mobilityshow.or.kr">
+                                <figure>
+                                    <img src="/images/sub/history_img05.jpg" alt="background image">
+                                </figure>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="history_modal">
+                <div class="modal_box">
+                    <div class="bg"></div>
+                    <div class="modal_con">
+                        <figure>
+                            <img src="/images/sub/history_img01.jpg" alt="image">
+                            <figcaption>
+                                <p class="year">2024</p>
+                                <div class="tt_box">
+                                    <div class="left">
+                                        <p><span class="t01">서울모빌리티쇼</span><span class="t02">서울모빌리티쇼</span></p>
+                                        <em>한국자동차모빌리티산업협회</em>
+                                    </div>
+                                    <a href="javascript:;" target="_blank">Go to website</a>
+                                </div>
+                            </figcaption>
+                        </figure>
+                        <button type="button">
+                            <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g filter="url(#filter0_b_830_1375)">
+                                <rect x="0.5" y="0.5" width="59" height="39" rx="19.5" stroke="url(#paint0_linear_830_1375)"/>
+                                </g>
+                                <defs>
+                                <filter id="filter0_b_830_1375" x="-4" y="-4" width="68" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feGaussianBlur in="BackgroundImageFix" stdDeviation="2"/>
+                                <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_830_1375"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_830_1375" result="shape"/>
+                                </filter>
+                                <linearGradient id="paint0_linear_830_1375" x1="30" y1="0" x2="30" y2="40" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="white"/>
+                                <stop offset="0.585015" stop-color="#C4C4C4"/>
+                                <stop offset="1" stop-color="white"/>
+                                </linearGradient>
+                                </defs>
+                            </svg>
+                            <i class="xi-close"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="magazine">
+                <div class="magazine_box ver05">
+                    <div class="top_txt"><p>ALWAYS YES, ALWAYS ON</p></div>
+                    <div class="yesong">
+                        <div class="icons">
+                            <div class="original">
+                                <img src="/images/sub/about_yesong.png" alt="yesong icon">
+                            </div>
+                            <div class="icons_box christmas">
+                                <img src="/images/sub/yesong_christmas01.png" alt="object" class="obj01">
+                                <p class="obj02">
+                                    <i class="snow01"></i>
+                                    <i class="snow02"></i>
+                                    <i class="snow03"></i>
+                                    <i class="snow04"></i>
+                                    <img src="/images/sub/yesong_christmas02.png" alt="object">
+                                </p>
+                                <img src="/images/sub/yesong_christmas03.png" alt="object" class="obj03">
+                                <img src="/images/sub/yesong_christmas04.png" alt="object" class="obj04">
+                            </div>
+                            <div class="icons_box newyear">
+                                <img src="/images/sub/yesong_newyear01.png" alt="object" class="obj01">
+                                <img src="/images/sub/yesong_newyear02.png" alt="object" class="obj02">
+                                <p class="obj03">
+                                    <img src="/images/sub/newyear_m01.png" alt="object" class="m01">
+                                    <img src="/images/sub/newyear_m02.png" alt="object" class="m02">
+                                    <img src="/images/sub/newyear_m03.png" alt="object" class="m03">
+                                </p>
+                                <p class="obj04">
+                                    <img src="/images/sub/newyear_m04.png" alt="object" class="m04">
+                                    <img src="/images/sub/newyear_m05.png" alt="object" class="m05">
+                                    <img src="/images/sub/newyear_m06.png" alt="object" class="m06">
+                                    <img src="/images/sub/newyear_m07.png" alt="object" class="m07">
+                                </p>
+                            </div>
+                            <div class="icons_box spring">
+                                <img src="/images/sub/yesong_spring01.png" alt="object" class="obj01">
+                                <img src="/images/sub/yesong_spring02.png" alt="object" class="obj02">
+                                <img src="/images/sub/yesong_spring01.png" alt="object" class="obj03">
+                                <img src="/images/sub/yesong_spring02.png" alt="object" class="obj04">
+                            </div>
+                            <div class="icons_box summer">
+                                <img src="/images/sub/yesong_summer01.png" alt="object" class="obj01">
+                                <p class="obj02">
+                                    <img src="/images/sub/sumer01.png" alt="object" class="s01">
+                                    <img src="/images/sub/sumer02.png" alt="object" class="s02">
+                                    <img src="/images/sub/sumer03.png" alt="object" class="s03">
+                                    <img src="/images/sub/sumer04.png" alt="object" class="s04">
+                                </p>
+                                <img src="/images/sub/sumer05.png" alt="object" class="obj03">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btm_txt">
+                        <div class="left tt_box">
+                            <strong>예손에게 맡기세요!</strong>
+                            <p>11년의 풍부한 경험에서 비롯된 노하우로 고객의 니즈를 한번에 캐치하여 <br>
+                                고객 만족도를 끌어올리는 센스만점 예손입니다. <br> 
+                                디자인부터 퍼블리싱, 개발 파트까지 각 분야의 어벤져스급 구성원분들과 <br>
+                                함께 고객을 위한 죄고의 결과물을 만들어내고 있습니다.
+                            </p>
+                        </div>
+                        <div class="right tt_box">
+                            <strong>예손 홈페이지 리뉴얼 기념 新 오브젝트</strong>
+                            <p>예손이 홈페이지 리뉴얼과 함께 예손의 새로운 이미지를 <br>
+                                보여줄 수 있는 새로운 오브젝트를 선보입니다. <br>
+                                예손의 Y에서 착안한 디자인으로 대표컬러인 그린컬러를 사용하여 <br>
+                                친근하고 따듯한 느낌을 줄 수 있게 제작했습니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about_team">
+                <div class="team_box">
+                    <div class="team_cont" data-aos="fade-in">
+                        <ul class="flip_con">
+                            <li class="flip_box flip_box01">
+                                <div class="flip_out">
+                                    <div class="flip_inner">
+                                        <div class="flip_front">
+                                            <div class="flip">
+                                                <p class="txt01">기획 및 디자인팀</p>
+                                                <figure><img src="/images/flip01.png" alt="object image"></figure>
+                                                <p class="txt02 ft_nc">MANAGEMENT <br>UIUX DESIGN</p>
+                                            </div>
+                                        </div>
+                                        <div class="flip_back">
+                                            <div class="flip">
+                                                <p class="txt01">기획 및 디자인팀</p>
+                                                <p class="txt02">
+                                                    안녕하세요?  (*°▽°*)<br>
+                                                    우리가 없다면 사이트 제작은 <br>
+                                                    시작조차 못합니다 ㅎㅎ <br>
+                                                    1:1 맞춤 사이트를 위해 같이 고민하고 <br>
+                                                    사용자와 의뢰인 모두에게 좋은 <br>
+                                                    사이트를 만들기 위해 어디에서든 <br>
+                                                    고민하는게 우리 입니다 :)
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="arrow"></div>
+                            </li>
+                            <li class="flip_box flip_box02">
+                                <div class="flip_out">
+                                    <div class="flip_inner">
+                                        <div class="flip_front">
+                                            <div class="flip">
+                                                <p class="txt01">프로그래밍 및 인터랙티브팀</p>
+                                                <figure><img src="/images/flip02.png" alt="object image"></figure>
+                                                <p class="txt02 ft_nc">Programming <br>Development</p>
+                                            </div>
+                                        </div>
+                                        <div class="flip_back">
+                                            <div class="flip">
+                                                <p class="txt01">프로그래밍 및 인터랙티브팀</p>
+                                                <p class="txt02">
+                                                    안녕하세요?  (●'◡'●) <br>
+                                                    우리는 앞에서 기획과 디자인이 <br>
+                                                    만든 시안들을 살아 움직이게 하고 <br>
+                                                    사용자들이 편리하게 이용할 수 <br>
+                                                    있게 숨을 불어넣습니다! <br>
+                                                    완성된 사이트를 보는게 우리의 <br>
+                                                    낙이라고 할 수 있죠 ㅎㅎㅎ
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="arrow"></div>
+                            </li>
+                            <li class="flip_box flip_box_tt">
+                                <div class="team_center" data-aos="fade-in">
+                                    <strong class="ft_pp">We’re YESON</strong>
+                                    <p class="small">예손을 구성하는 구성원들을 소개합니다.</p>
+                                    <a href="recruit.html"><p>채용안내</p></a>
+                                </div>
+                            </li>
+                            <li class="flip_box flip_box03">
+                                <div class="flip_out">
+                                    <div class="flip_inner">
+                                        <div class="flip_front">
+                                            <div class="flip">
+                                                <p class="txt01">테스트 및 운영팀</p>
+                                                <figure><img src="/images/flip03.png" alt="object image"></figure>
+                                                <p class="txt02 ft_nc">Test <br>Operations Team</p>
+                                            </div>
+                                        </div>
+                                        <div class="flip_back">
+                                            <div class="flip">
+                                                <p class="txt01">테스트 및 운영팀</p>
+                                                <p class="txt02">
+                                                    안녕하세요? (^///^) <br>
+                                                    완성 됐다고 끝내면 섭섭하죠,,ㅎㅎ <br>
+                                                    우리는 완성된 사이트를 한번 더 <br>
+                                                    검수하여 안전하게 운영 될 수 있게 <br>
+                                                    하는 꼭 필요한 팀입니다~ <br>
+                                                    이후에도 관리를 위해 항상 <br>
+                                                    소통하고 관리하는 역할을 합니다!
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="arrow"></div>
+                            </li>
+                        </ul>
+                        <div class="gradient">
+                            <svg class="svg01" width="954" height="1740" viewBox="0 0 954 1740" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g filter="url(#filter0_f_601_2639)">
+                                <circle cx="84" cy="870" r="270" fill="#95EF50"/>
+                                </g>
+                                <defs>
+                                <filter id="filter0_f_601_2639" x="-786" y="0" width="1740" height="1740" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="300" result="effect1_foregroundBlur_601_2639"/>
+                                </filter>
+                                </defs>
+                            </svg>
+                            <svg class="svg02" width="828" height="1900" viewBox="0 0 828 1900" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g filter="url(#filter0_f_601_2640)">
+                                <circle cx="950" cy="950" r="350" fill="#50C4EF"/>
+                                </g>
+                                <defs>
+                                <filter id="filter0_f_601_2640" x="0" y="0" width="1900" height="1900" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="300" result="effect1_foregroundBlur_601_2640"/>
+                                </filter>
+                                </defs>
+                            </svg>
+                            <svg class="svg03" width="936" height="936" viewBox="0 0 936 936" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g filter="url(#filter0_f_601_2641)">
+                                <circle cx="468" cy="468" r="168" fill="#E694FF"/>
+                                </g>
+                                <defs>
+                                <filter id="filter0_f_601_2641" x="0" y="0" width="936" height="936" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="150" result="effect1_foregroundBlur_601_2641"/>
+                                </filter>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="map">
+                <div class="map_wrap">
+                    <div class="map_top" data-aos="fade-in">
+                        <div class="ft_pp">
+                            <p>YOUR IDEAS</p>
+                            <p><img src="/images/sub/map_topbg.jpg" alt="background iamge"></p>
+                            <p>INTO REALITY!</p>
+                        </div>
+                    </div>
+                    <div class="max_box" data-aos="fade-up">
+                        <div class="map_inner">
+                            <div class="map_inner_box">
+                                <div class="bar">
+                                    <svg class="bar_logo" width="35" height="42" viewBox="0 0 35 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.314453 6.92876C7.47772 6.92876 13.3036 12.7333 13.3036 19.8648C13.3036 15.8157 14.5448 12.0539 16.6608 8.92138C13.1158 3.69132 7.1159 0.244141 0.314453 0.244141V6.92876Z" fill="white"/>
+                                        <path d="M0.191406 34.6288C7.35468 34.6288 13.1851 28.8287 13.1851 21.6973C13.1851 25.7463 14.4218 29.5081 16.5378 32.6361C12.9974 37.8662 6.98827 41.3179 0.191406 41.3179V34.6333V34.6288Z" fill="white"/>
+                                        <path d="M17.962 9.13524C15.846 12.2632 14.6094 16.0296 14.6094 20.0787V20.9678C14.6094 23.307 15.0353 25.5504 15.7956 27.6342C16.3498 29.1526 17.0735 30.5889 17.9666 31.9067C18.8597 30.5889 19.5834 29.1526 20.1376 27.6342C20.8978 25.5504 21.3238 23.307 21.3238 20.9678V20.0787C21.3238 12.9472 27.1497 7.14263 34.313 7.14263V0.458008C27.5161 0.458008 21.507 3.90519 17.962 9.13524Z" fill="white"/>
+                                    </svg>
+                                    <div class="bar_menu menu01">
+                                        <p class="menu_icon" data-menutop="menu01">
+                                            <svg width="33" height="34" viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M16.685 3.55469C10.7139 3.55469 5.85558 8.41303 5.85558 14.3773C5.81632 23.1018 16.2735 30.3358 16.685 30.6282C16.685 30.6282 27.5537 23.1018 27.5144 14.3841C27.5144 8.41303 22.6561 3.55469 16.685 3.55469ZM16.685 19.7988C13.6934 19.7988 11.2703 17.3757 11.2703 14.3841C11.2703 11.3925 13.6934 8.96939 16.685 8.96939C19.6766 8.96939 22.0997 11.3925 22.0997 14.3841C22.0997 17.3757 19.6766 19.7988 16.685 19.7988Z" fill="#1E1E1E"/>
+                                            </svg>
+                                        </p>
+                                        <p class="menu_icon" data-menutop="menu02">
+                                            <svg width="26" height="13" viewBox="0 0 26 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <rect width="26" height="2" fill="#0C0B09"/>
+                                                <rect  y="11" width="26" height="2" fill="#0C0B09"/>
+                                            </svg>
+                                        </p>
+                                        <p class="menu_icon" data-menutop="menu03">
+                                            <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M15.2146 27.3275L13.0836 25.3875C5.51458 18.524 0.517578 13.9826 0.517578 8.44178C0.517578 3.90039 4.07427 0.358398 8.60096 0.358398C11.1582 0.358398 13.6127 1.54886 15.2146 3.41539C16.8166 1.54886 19.271 0.358398 21.8283 0.358398C26.355 0.358398 29.9117 3.90039 29.9117 8.44178C29.9117 13.9826 24.9147 18.524 17.3457 25.3875L15.2146 27.3275Z" fill="#1E1E1E"/>
+                                            </svg>
+                                            <span class="heart">
+                                                <!-- <img src="/images/sub/heart_below.png" alt="object"> -->
+                                            </span>
+                                        </p>
+                                        <svg class="gooey" width="69" height="104" viewBox="0 0 69 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <ellipse cx="33.6137" cy="34.3389" rx="33.6137" ry="34.3389" transform="matrix(-1 0 0 1 68.0322 18.9844)" fill="#BFD262"/>
+                                            <path d="M12.7008 103.68C14.3764 98.5906 19.0681 88.3874 36.4946 87.2088L12.7008 77.5325V103.68Z" fill="#BFD262" stroke="#BFD262" stroke-width="1.11048"/>
+                                            <path d="M12.7012 0.646484C15.4853 8.38808 20.7055 18.8949 37.4102 19.6954L12.7012 25.8145V0.646484Z" fill="#BFD262" stroke="#BFD262" stroke-width="1.11048"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="cont">
+                                    <div class="hi">
+                                        <p class="txt">Hi,Yeson</p>
+                                        <p class="hand">🖐</p>
+                                    </div>
+                                    <div class="cont01">
+                                        <div class="address">
+                                            <div class="box_address">
+                                                <p>Address</p>
+                                                <span>경기도 부천시 길주로 77번길 33 나루빌딩 <br>301호 (부천시 원미구 상동 532-12 )</span>
+                                            </div>
+                                            <div class="box_call">
+                                                <p>
+                                                    <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7684 20.7679C14.4318 20.7187 10.6437 20.1952 6.67638 16.2288C2.71003 12.2615 2.18744 8.47434 2.13731 7.13675C2.06305 5.09834 3.62434 3.11842 5.42791 2.3452C5.64509 2.25142 5.88293 2.21571 6.11808 2.24159C6.35323 2.26746 6.57761 2.35403 6.76921 2.49279C8.25438 3.57511 9.27915 5.21252 10.1591 6.49998C10.3527 6.78284 10.4355 7.12705 10.3917 7.46701C10.3479 7.80698 10.1805 8.11894 9.92149 8.34345L8.11051 9.68847C8.02301 9.75165 7.96142 9.84444 7.93718 9.9496C7.91294 10.0548 7.92769 10.1652 7.9787 10.2603C8.38898 11.0056 9.11857 12.1158 9.95398 12.9512C10.7894 13.7866 11.9525 14.5645 12.7498 15.0212C12.8498 15.0773 12.9675 15.093 13.0787 15.065C13.1898 15.0371 13.2861 14.9675 13.3476 14.8708L14.5265 13.0765C14.7432 12.7886 15.0629 12.5958 15.4187 12.5383C15.7744 12.4809 16.1386 12.5633 16.4349 12.7684C17.7409 13.6725 19.2651 14.6796 20.3808 16.1081C20.5309 16.3011 20.6263 16.5309 20.6572 16.7734C20.688 17.0158 20.6532 17.2622 20.5563 17.4866C19.7794 19.2994 17.8133 20.8431 15.7684 20.7679Z" fill="#242FBE"/>
+                                                    </svg>
+                                                    <a href="tel:02-6215-0200">02-6215-0200</a>
+                                                </p>
+                                                <p>
+                                                    <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M20.4729 8.41852H16.76V3.77734H7.47762V18.6291H20.4729V8.41852ZM9.33409 5.63381H14.9035V8.41852H9.33409V5.63381ZM13.047 15.8444H9.33409V11.2032H13.047V15.8444ZM14.9035 15.8444C14.393 15.8444 13.9753 15.4267 13.9753 14.9162C13.9753 14.4056 14.393 13.9879 14.9035 13.9879C15.414 13.9879 15.8317 14.4056 15.8317 14.9162C15.8317 15.4267 15.414 15.8444 14.9035 15.8444ZM14.9035 13.0597C14.393 13.0597 13.9753 12.642 13.9753 12.1315C13.9753 11.6209 14.393 11.2032 14.9035 11.2032C15.414 11.2032 15.8317 11.6209 15.8317 12.1315C15.8317 12.642 15.414 13.0597 14.9035 13.0597ZM17.6882 15.8444C17.1777 15.8444 16.76 15.4267 16.76 14.9162C16.76 14.4056 17.1777 13.9879 17.6882 13.9879C18.1987 13.9879 18.6164 14.4056 18.6164 14.9162C18.6164 15.4267 18.1987 15.8444 17.6882 15.8444ZM17.6882 13.0597C17.1777 13.0597 16.76 12.642 16.76 12.1315C16.76 11.6209 17.1777 11.2032 17.6882 11.2032C18.1987 11.2032 18.6164 11.6209 18.6164 12.1315C18.6164 12.642 18.1987 13.0597 17.6882 13.0597ZM1.9082 7.49028H6.54938V19.5573H1.9082V7.49028Z" fill="#242FBE"/>
+                                                    </svg>
+                                                    <a href="tel:02-6455-0449">02-6455-0449</a>
+                                                </p>
+                                                <p>
+                                                    <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M18.97 4.61914H4.11819C3.09713 4.61914 2.271 5.45455 2.271 6.47561L2.26172 17.6144C2.26172 18.6355 3.09713 19.4709 4.11819 19.4709H18.97C19.991 19.4709 20.8264 18.6355 20.8264 17.6144V6.47561C20.8264 5.45455 19.991 4.61914 18.97 4.61914ZM18.5987 8.56414L12.036 12.6669C11.739 12.8526 11.3491 12.8526 11.0521 12.6669L4.48948 8.56414C4.39641 8.51189 4.3149 8.4413 4.2499 8.35664C4.18489 8.27198 4.13774 8.175 4.1113 8.07159C4.08486 7.96818 4.07967 7.86048 4.09606 7.755C4.11244 7.64953 4.15006 7.54848 4.20663 7.45796C4.2632 7.36745 4.33755 7.28935 4.42518 7.22841C4.51281 7.16746 4.61189 7.12492 4.71643 7.10338C4.82097 7.08183 4.9288 7.08172 5.03339 7.10305C5.13797 7.12438 5.23714 7.16671 5.3249 7.22748L11.5441 11.1168L17.7632 7.22748C17.851 7.16671 17.9502 7.12438 18.0548 7.10305C18.1593 7.08172 18.2672 7.08183 18.3717 7.10338C18.4763 7.12492 18.5753 7.16746 18.663 7.22841C18.7506 7.28935 18.8249 7.36745 18.8815 7.45796C18.9381 7.54848 18.9757 7.64953 18.9921 7.755C19.0085 7.86048 19.0033 7.96818 18.9768 8.07159C18.9504 8.175 18.9033 8.27198 18.8382 8.35664C18.7732 8.4413 18.6917 8.51189 18.5987 8.56414Z" fill="#242FBE"/>
+                                                    </svg>
+                                                    <a href="mailto:webmaster@yesoni.co.kr">webmaster@yesoni.co.kr</a>
+                                                </p>
+                                            </div>
+                                            <svg width="175" height="184" viewBox="0 0 175 184" fill="none" xmlns="http://www.w3.org/2000/svg" class="ad_logo">
+                                                <g opacity="0.2">
+                                                <path d="M0.654297 34.8702C37.2407 34.8702 66.9964 64.5171 66.9964 100.941C66.9964 80.2604 73.3358 61.047 84.1433 45.0475C66.0373 18.335 35.3927 0.728516 0.654297 0.728516V34.8702Z" fill="#BFD262"/>
+                                                <path d="M0.0273438 176.348C36.6137 176.348 66.3928 146.725 66.3928 110.301C66.3928 130.981 72.7089 150.195 83.5164 166.171C65.4337 192.884 34.7423 210.513 0.0273438 210.513V176.372V176.348Z" fill="#D6D7DB"/>
+                                                <path d="M90.7857 46.1403C79.9782 62.1165 73.6621 81.3532 73.6621 102.034V106.575C73.6621 118.522 75.8376 129.981 79.7209 140.624C82.5514 148.379 86.2475 155.715 90.8091 162.446C95.3707 155.715 99.0667 148.379 101.897 140.624C105.78 129.981 107.956 118.522 107.956 106.575V102.034C107.956 65.6099 137.712 35.963 174.298 35.963V1.82129C139.583 1.82129 108.892 19.4278 90.7857 46.1403Z" fill="#D6D7DB"/>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                        <div class="weather">
+                                            <div id="ww_06bf2c166a81b" v='1.3' loc='id' a='{"t":"responsive","lang":"ko","sl_lpl":1,"ids":["wl7400"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"image","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722"}'>More forecasts: <a href="https://oneweather.org/seoul/30_days/" id="ww_06bf2c166a81b_u" target="_blank">Seoul 30 day forecast</a></div><script async src="https://app3.weatherwidget.org/js/?id=ww_06bf2c166a81b"></script>
+                                        </div>
+                                        <div class="calendar">
+                                            <strong>Today</strong>
+                                            <div class="ca_box01">
+                                                <p class="head"></p>
+                                                <div class="body">
+                                                    <p class="mid"><span class="month"></span><span class="year"></span><span class="day"></span></p>
+                                                    <p class="date_big"></p>
+                                                </div>
+                                            </div>
+                                            <div class="ca_box02 ft_pp">
+                                                <table id="calendar" >
+                                                    <thead>
+                                                        <tr>
+                                                            <th colspan="7" class="year_mon"></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>SU</th>
+                                                            <th>MO</th>
+                                                            <th>TU</th>
+                                                            <th>WE</th>
+                                                            <th>TH</th>
+                                                            <th>FR</th>
+                                                            <th>SA</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="cont02">
+                                        <div id="map" style="width: 100%; height: 100%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page_end"></div>
+        </div>
+        <script>
+            //kakao map
+            function mapfunc01(){
+        
+                //map bar gooey 위치
+                $('.map_inner_box .bar_menu .menu_icon').on('click', function () {
+                    let menutop = $(this).data('menutop')
+                    $('.map_inner_box .bar_menu').attr('class', 'bar_menu'); 
+                    $('.map_inner_box .bar_menu').addClass(menutop);
+
+                    if (menutop == "menu02") {
+                        $('.map .max_box').addClass('ver02')
+                        if (map) {
+                            map.relayout();
+                            map.setCenter(customOverlay.getPosition());
+                        }
+                    } else {
+                        $('.map .max_box').removeClass('ver02')
+                        if (map) {
+                            map.relayout();
+                            map.setCenter(customOverlay.getPosition());
+                        }
+                    }
+                })
+
+                var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                    mapOption = { 
+                        center: new kakao.maps.LatLng(37.506969, 126.751983), // 지도의 중심좌표
+                        level: 1 // 지도의 확대 레벨
+                    };
+            
+                var map = new kakao.maps.Map(mapContainer, mapOption);
+            
+                // var imageSrc = 'http://enplus.yesoni.co.kr/images/mapmarker.png', // 마커이미지의 주소입니다    
+                var imageSrc = '/images/marker.png', // 마커이미지의 주소입니다    
+                imageSize = new kakao.maps.Size(140, 81), // 마커이미지의 크기입니다
+                imageOption = {offset: new kakao.maps.Point(65, 20)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+            
+                // 마커가 표시될 위치입니다 
+                var markerPosition  = new kakao.maps.LatLng(37.506969, 126.751983); 
+                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+            
+                // 마커를 생성합니다
+                var marker = new kakao.maps.Marker({
+                    position: markerPosition,
+                    image: markerImage
+                });
+            
+                // 마커가 지도 위에 표시되도록 설정합니다
+                marker.setMap(map);
+            
+            
+            
+                // 커스텀 오버레이에 표시할 내용입니다     
+                // HTML 문자열 또는 Dom Element 입니다 
+                var content = '<div class="overlaybox">' +
+                    '    <div class="boxtitle"><a href="https://kko.kakao.com/S-i7WBpgzK" target="_blank" style="color:transparent; transform:translate(5px,5px); width;130px; height:50px; display:block;width:130px ">YESON</a></div>' +
+                    '</div>';
+            
+                // 커스텀 오버레이가 표시될 위치입니다 
+                var position = new kakao.maps.LatLng(37.506969, 126.751983);   
+            
+                // 커스텀 오버레이를 생성합니다
+                var customOverlay = new kakao.maps.CustomOverlay({
+                    position: position,
+                    content: content
+                });
+            
+                // 커스텀 오버레이를 지도에 표시합니다
+                customOverlay.setMap(map);
+            
+                // 리사이즈 시 센터 포지션으로 옮김
+                $(function(){
+                    $(window).resize(function(){
+                        map.setCenter(customOverlay.getPosition());
+                    });
+                });
+            }
+            mapfunc01();
+
+            //we're yeson card
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.defaults({ ease: "ease", duration: 1 });
+
+            const history_ani = gsap.timeline();
+            history_ani
+            // .from(".history_list .history_wrapper ", { transform: 'translateX(30%)'} )
+            .addLabel('history01')
+            .to(".history_list .history_wrapper ", { transform: 'translateX(-60%)'} , 'history01' )
+            
+            ScrollTrigger.create({
+            animation: history_ani,
+            trigger: ".history",
+            start : "top",
+            end: "bottom",
+            // markers: true,
+            scrub:1,
+            pin: true,
+            anticipatePin: 1,
+            toggleActions: "play none none reverse",
+            onUpdate: self => {
+                const progress = Math.round(self.progress * 100);
+                const step = 100 / 7; 
+                const currentStep = Math.floor(progress / step);
+
+                if (currentStep !== self.prevStep) {
+                    self.prevStep = currentStep;
+                    $('.history_list .history_slide .year_box').removeClass('now');
+                    $(`.year_box.year_box${currentStep}`).addClass('now');
+                }
+            }
+
+
+            });
+        </script>
+ 
+        <!-- footer start -->
+        <footer class="footer">
+            <div class="footer_cont">
+                <ul class="text_flow">
+                    <li><p>WOULD YOU LIKE TO JOIN US?</p></li>
+                    <li><p>WOULD YOU LIKE TO JOIN US?</p></li>
+                </ul>
+                <div class="footer_text">
+                    <div class="left">
+                        <ul>
+                            <li><i class="xi-call"></i><a href="tel:02-6215-0200">02-6215-0200</a></li>
+                            <li><i class="xi-fax"></i><a href="tel:02-6455-0449">02-6455-0449</a></li>
+                            <li><i class="xi-mail"></i><a href="mailto:webmaster@yesoni.co.kr">webmaster@yesoni.co.kr</a></li>
+                            <li><i class="xi-maker"></i><address>[부천] 경기도 부천시 길주로 77번길 33 나루빌딩 301호 <br>[서울] 서울시 구로구 연동로 13길 18-41 오크팰리스 1층 사무실</address>
+                            </li>
+                        </ul>
+                        <small>COPYRIGHT © YESONCOMMUNICATION. ALL RIGHTS RESERVED.</small>
+                    </div>
+                    <div class="right">
+                        <ul>
+                            <li><span class="txt01">대표</span><span class="txt02">손현영</span></li>
+                            <li><span class="txt01">사업자등록번호</span><span class="txt02">130-46-11354</span></li>
+                            <li><span class="txt01">통신판매업신고</span><span class="txt02">제 2015-서울구로-0950호</span></li>
+                        </ul>
+                        <div class="footer_btns">
+                            <div class="btn_privacy"><p>개인정보처리방침</p></div>
+                            <a href="https://open.kakao.com/o/sMGNEn9c" target="_blank" class="ft_sns_kakao">
+                                <p>
+                                    <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 0.160156C10.1458 0.160156 11.2266 0.335938 12.2422 0.6875C13.2578 1.03906 14.1432 1.51432 14.8984 2.11328C15.6536 2.71224 16.2461 3.41536 16.6758 4.22266C17.1185 5.02995 17.3398 5.88932 17.3398 6.80078C17.3398 7.72526 17.1185 8.59115 16.6758 9.39844C16.2461 10.1927 15.6536 10.8958 14.8984 11.5078C14.1432 12.1068 13.2578 12.582 12.2422 12.9336C11.2266 13.2721 10.1458 13.4414 9 13.4414C8.72656 13.4414 8.45964 13.4349 8.19922 13.4219C7.9388 13.3958 7.6849 13.3633 7.4375 13.3242L3.82422 15.6289L4.44922 12.3672C3.88932 12.0677 3.375 11.7227 2.90625 11.332C2.4375 10.9284 2.03385 10.4922 1.69531 10.0234C1.36979 9.54167 1.11589 9.03385 0.933594 8.5C0.751302 7.95312 0.660156 7.38672 0.660156 6.80078C0.660156 5.88932 0.875 5.02995 1.30469 4.22266C1.7474 3.41536 2.34635 2.71224 3.10156 2.11328C3.85677 1.51432 4.74219 1.03906 5.75781 0.6875C6.77344 0.335938 7.85417 0.160156 9 0.160156Z" fill="#2C2C2C"/>
+                                    </svg>
+                                </p>
+                            </a>
+                            <a href="https://open.kakao.com/o/sMGNEn9c" target="_blank" class="ft_sns_insta"><p><i class="xi-instagram"></i></p></a>
+                            <a href="https://open.kakao.com/o/sMGNEn9c" target="_blank" class="ft_sns_blog">
+                                <p>
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.80629 8.24414C4.60654 8.24414 4.42898 8.32285 4.29581 8.46903C4.15155 8.61521 4.08496 8.79512 4.08496 9.00876C4.08496 9.2224 4.15155 9.39107 4.29581 9.54849C4.44008 9.69467 4.60654 9.77338 4.80629 9.77338C5.00605 9.77338 5.1836 9.69467 5.32787 9.54849C5.47214 9.40231 5.54982 9.2224 5.54982 9.00876C5.54982 8.79512 5.47214 8.61521 5.32787 8.46903C5.1836 8.31161 5.01714 8.24414 4.80629 8.24414Z" fill="#2C2C2C"/>
+                                    <path d="M11.0319 8.23291C10.8321 8.23291 10.6546 8.31162 10.5214 8.4578C10.3771 8.60397 10.3105 8.78388 10.3105 8.99753C10.3105 9.21117 10.3771 9.37984 10.5214 9.53726C10.6657 9.68343 10.8321 9.76215 11.0319 9.76215C11.2316 9.76215 11.4092 9.68343 11.5535 9.53726C11.6977 9.39108 11.7754 9.21117 11.7754 8.99753C11.7754 8.78388 11.6977 8.61522 11.5535 8.4578C11.4203 8.30038 11.2427 8.23291 11.0319 8.23291Z" fill="#2C2C2C"/>
+                                    <path d="M15.1935 8.24414C14.9937 8.24414 14.8162 8.32285 14.683 8.46903C14.5388 8.61521 14.4722 8.79512 14.4722 9.00876C14.4722 9.2224 14.5388 9.39107 14.683 9.54849C14.8273 9.69467 14.9937 9.77338 15.1935 9.77338C15.3933 9.77338 15.5708 9.69467 15.7151 9.54849C15.8594 9.40231 15.937 9.2224 15.937 9.00876C15.937 8.79512 15.8594 8.61521 15.7151 8.46903C15.5708 8.31161 15.3933 8.24414 15.1935 8.24414Z" fill="#2C2C2C"/>
+                                    <path d="M17.0358 2.68945H2.96424C1.88779 2.68945 1 3.589 1 4.67971V12.7419C1 13.8326 1.88779 14.7322 2.96424 14.7322H8.49075C8.49075 14.7322 9.5561 17.6895 9.94451 17.6895C10.3329 17.6895 11.4871 14.7322 11.4871 14.7322H17.0358C18.1122 14.7322 19 13.8326 19 12.7419V4.67971C19 3.589 18.1122 2.68945 17.0358 2.68945ZM6.22688 10.1332C5.94945 10.4481 5.51665 10.583 5.05055 10.583C4.62885 10.583 4.31813 10.4593 4.09618 10.2794H4.08508V10.5043H3.03083V5.83788H4.08508V7.62574H4.10728C4.39581 7.37836 4.77312 7.29965 5.21702 7.27716C5.59433 7.26592 5.99383 7.50205 6.23798 7.78316C6.47102 8.06427 6.64858 8.5028 6.64858 8.98631C6.64858 9.51479 6.51541 9.81839 6.22688 10.1332ZM8.50185 10.5493H7.4254C7.4254 10.5493 7.4254 8.098 7.4254 7.65947C7.4254 6.99605 6.90382 6.9061 6.90382 6.9061V5.74792C6.90382 5.74792 8.41307 5.83788 8.50185 7.6932C8.50185 8.22169 8.50185 10.5493 8.50185 10.5493ZM12.73 9.66097C12.6412 9.87461 12.508 10.0545 12.3305 10.2232C12.164 10.3806 11.9642 10.5043 11.7423 10.5943C11.5203 10.6842 11.2873 10.7292 11.0432 10.7292C10.799 10.7292 10.566 10.6842 10.3551 10.5943C10.1332 10.5043 9.93342 10.3806 9.76695 10.2232C9.5894 10.0545 9.45623 9.86337 9.36745 9.66097C9.27867 9.45857 9.23428 9.23368 9.23428 8.99755C9.23428 8.76142 9.27867 8.54777 9.36745 8.33413C9.45623 8.13173 9.5894 7.94058 9.76695 7.77191C9.94451 7.61449 10.1332 7.4908 10.3551 7.40085C10.5771 7.31089 10.8101 7.26592 11.0432 7.26592C11.2873 7.26592 11.5203 7.31089 11.7423 7.40085C11.9642 7.4908 12.164 7.61449 12.3305 7.77191C12.508 7.94058 12.6301 8.12049 12.73 8.33413C12.8187 8.54777 12.8631 8.76142 12.8631 8.99755C12.8631 9.23368 12.8187 9.44732 12.73 9.66097ZM16.9692 10.122C16.9692 10.9428 16.8138 11.4376 16.4587 11.7862C16.0259 12.2022 15.4155 12.2247 14.9051 12.1572V11.3139C15.3379 11.3589 15.926 11.0665 15.926 10.5043V10.2907H15.9149C15.6708 10.628 15.3268 10.7517 14.8496 10.7517C14.4168 10.7517 14.0395 10.5943 13.7842 10.2907C13.529 9.98705 13.4069 9.58226 13.4069 9.07626C13.4069 8.5028 13.5512 8.05302 13.8286 7.71569C14.1171 7.37836 14.5166 7.22094 14.9827 7.22094C15.3933 7.22094 15.6597 7.32214 15.9149 7.55827H15.926V7.29965H16.9803V10.122H16.9692Z" fill="#2C2C2C"/>
+                                    </svg>
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer_som">
+                    <figure><img src="/images/footer_icon.png" alt="object"><figcaption><a href="about.html">Touch me</a></figcaption></figure>
+                </div>
+            </div>
+        </footer>
+        <div class="quickmenu">
+            <!-- <div class="green_select"><div class="bar"></div></div> -->
+            <ul>
+                <li><a href="portfolio.html"><p>프로젝트</p></a></li>
+                <li><a href="about.html"><p>회사소개</p></a></li>
+                <li class="microbtn">
+                    <a href="https://micro.yesoni.kr/" target="_blank">
+                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_131_1785)">
+                            <path d="M28.8234 14.7004C28.5075 14.7004 28.2433 14.8121 28.0363 15.0381C27.8266 15.2642 27.7231 15.591 27.7231 16.0212C27.7231 16.4515 27.8266 16.7702 28.0309 16.9989C28.2351 17.2277 28.4938 17.3393 28.8043 17.3393C29.1148 17.3393 29.3789 17.2249 29.5968 16.9989C29.8146 16.7702 29.9236 16.4461 29.9236 16.0212C29.9236 15.5964 29.8174 15.2723 29.605 15.0436C29.3925 14.8148 29.1311 14.7032 28.8206 14.7032L28.8234 14.7004Z" fill="#0C0B09"/>
+                            <path d="M30.6781 0H4.3219C1.93627 0 0 1.93627 0 4.3219V30.6754C0 33.0637 1.93627 34.9973 4.3219 34.9973H30.6754C33.0637 34.9973 34.9973 33.061 34.9973 30.6754V4.3219C34.9973 1.93355 33.061 0 30.6754 0H30.6781ZM12.6498 18.6683H11.0376V15.7925C11.0376 15.4521 10.9477 15.1879 10.768 15C10.5882 14.8148 10.3404 14.7195 10.0218 14.7195C9.70316 14.7195 9.45806 14.8121 9.2756 15C9.09586 15.1879 9.00599 15.4521 9.00599 15.7925V18.6683H7.39379V15.7925C7.39379 15.4521 7.30392 15.1879 7.12418 15C6.94444 14.8148 6.69662 14.7195 6.378 14.7195C6.05937 14.7195 5.81427 14.8121 5.63181 15C5.45207 15.1879 5.3622 15.4521 5.3622 15.7925V18.6683H3.73911V13.3715H5.3622V14.0359C5.5256 13.8154 5.74074 13.6383 6.00763 13.5103C6.27451 13.3796 6.57407 13.317 6.90904 13.317C7.30664 13.317 7.6634 13.4014 7.97658 13.573C8.28976 13.7446 8.53486 13.9869 8.71187 14.3028C8.89433 14.0114 9.14488 13.7745 9.46078 13.592C9.77669 13.4096 10.1225 13.317 10.4956 13.317C11.1547 13.317 11.6776 13.5158 12.067 13.9161C12.4564 14.3137 12.6498 14.8693 12.6498 15.5773V18.671V18.6683ZM15.4112 18.6683H13.7881V13.3715H15.4112V18.6683ZM15.2914 12.5708C15.1117 12.7397 14.8829 12.8214 14.6024 12.8214C14.3219 12.8214 14.085 12.7369 13.9052 12.5708C13.7255 12.402 13.6356 12.195 13.6356 11.9499C13.6356 11.7048 13.7255 11.4869 13.9052 11.3181C14.085 11.1492 14.3192 11.0675 14.6024 11.0675C14.8856 11.0675 15.1089 11.152 15.2914 11.3181C15.4711 11.4869 15.561 11.6966 15.561 11.9499C15.561 12.2032 15.4711 12.4047 15.2914 12.5708ZM18.1835 17.0125C18.3606 17.244 18.5975 17.3584 18.8943 17.3584C19.311 17.3584 19.5942 17.1569 19.7386 16.7511H21.4651C21.3263 17.372 21.0321 17.8595 20.5828 18.2135C20.1334 18.5675 19.5806 18.7446 18.9216 18.7446C18.4014 18.7446 17.9412 18.6329 17.5408 18.4123C17.1378 18.1917 16.8246 17.8758 16.6013 17.4646C16.3753 17.0534 16.2636 16.5714 16.2636 16.0212C16.2636 15.4711 16.3753 14.9891 16.6013 14.5779C16.8246 14.1667 17.1378 13.8508 17.5408 13.6275C17.9439 13.4069 18.4041 13.2952 18.9216 13.2952C19.5861 13.2952 20.1416 13.4695 20.5882 13.8181C21.0349 14.1667 21.3263 14.6569 21.4651 15.2887H19.7386C19.5942 14.8829 19.311 14.6814 18.8943 14.6814C18.5975 14.6814 18.3606 14.7958 18.1835 15.0272C18.0065 15.2587 17.9167 15.5882 17.9167 16.0185C17.9167 16.4488 18.0065 16.7783 18.1835 17.0098V17.0125ZM25.6155 15.0327H25.1688C24.7631 15.0327 24.4608 15.1198 24.2565 15.2941C24.055 15.4684 23.9515 15.7734 23.9515 16.2092V18.6683H22.3284V13.3715H23.9515V14.2538C24.1422 13.9624 24.3791 13.7337 24.6623 13.5648C24.9483 13.396 25.2642 13.3143 25.6127 13.3143V15.0327H25.6155ZM31.2091 17.4592C30.9668 17.8731 30.6318 18.1917 30.2124 18.4123C29.793 18.6329 29.3219 18.7446 28.8045 18.7446C28.287 18.7446 27.8186 18.6329 27.4047 18.4123C26.9907 18.1917 26.6639 17.8758 26.427 17.4646C26.1901 17.0534 26.0703 16.5714 26.0703 16.0212C26.0703 15.4711 26.1901 14.9973 26.4297 14.5833C26.6694 14.1694 26.9989 13.8508 27.4156 13.6302C27.8322 13.4096 28.3007 13.2979 28.8208 13.2979C29.341 13.2979 29.8066 13.4096 30.226 13.6302C30.6427 13.8508 30.9722 14.1694 31.2119 14.5833C31.4515 14.9973 31.5714 15.4766 31.5714 16.0212C31.5714 16.5659 31.4488 17.0452 31.2064 17.4592H31.2091Z" fill="#0C0B09"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_131_1785">
+                            <rect width="35" height="35" fill="white"/>
+                            </clipPath>
+                            </defs>
+                        </svg>
+                    </a>
+                </li>
+                <li><a href="notice.html"><p>공지사항</p></a></li>
+                <li><a href="contact.html"><p>견적문의</p></a></li>
+                <li class="greenbar"></li>
+            </ul>
+        </div>
+        <div class="contact_btn">
+            <div class="contact_btn_wrap">
+                <div class="bubble_text">
+                    <p>문의하고 싶어요!</p>
+                </div>
+                <a href="javascript:;">
+                    <svg width="32" height="37" viewBox="0 0 32 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.6001 5.64439C7.9056 5.64439 13.038 10.5465 13.038 16.569C13.038 13.1516 14.1231 9.97223 16.0001 7.3251C12.8767 2.91323 7.59765 0 1.6001 0V5.64439Z" fill="#C0D564"/>
+                        <path d="M0.0162933 30.4969C7.0224 30.4969 12.7251 25.599 12.7251 19.5815C12.7251 22.9961 13.9308 26.1728 16 28.8176C12.5295 33.2398 6.66395 36.1506 0 36.1506V30.5109L0.0162933 30.4969Z" fill="white"/>
+                        <path d="M17.3928 7.89027C15.5018 10.7416 14.3999 14.1663 14.3999 17.8474V18.6621C14.3999 20.7893 14.7722 22.8411 15.4571 24.7269C15.9485 26.1148 16.6036 27.4123 17.3928 28.6192C18.1969 27.4123 18.8371 26.1148 19.3285 24.7269C20.0134 22.826 20.3857 20.7893 20.3857 18.6621V17.8474C20.3857 11.3602 25.5972 6.07988 31.9999 6.07988V0C25.9248 0 20.5495 3.138 17.3779 7.89027H17.3928Z" fill="white"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="contact_btn_info">
+                <div class="info_wrap">
+                    <button type="button" class="btn_close"><i class="xi-close close01"></i><i class="xi-close close02"></i></button>
+                    <div class="info_data">
+                        <label for="contact_name">
+                            <input type="text" id="contact_name" placeholder="신청자명을 입력해주세요.">
+                        </label>
+                        <label for="contact_phone">
+                            <input type="text" id="contact_phone" placeholder="휴대폰번호를 입력해주세요."  oninput="autoHyphen(this)" maxlength="13">
+                        </label>
+                        <div class="contact_check">
+                            <label for="contact_check">
+                                <input type="checkbox" id="contact_check">
+                                <span>개인정보처리방침</span>
+                            </label>
+                            <p>[전문보기]</p>
+                        </div>
+                        <button type="submit" class="btn_send"><p>SEND</p><i class="xi-send"></i></button>
+                    </div>
+                    <div class="info_call">
+                        <a href="javascript:;" class="btn_kakao" onclick="openPopup();" ><p><i class="xi-kakaotalk"></i><span>카카오톡 상담하기</span></p></a>
+                        <a href="tel:02-6215-0200" class="btn_call"><p>02-6215-0200</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="msg"></div>
+    <script>
+        function openPopup() {
+            var url = 'https://open.kakao.com/o/sMGNEn9c';
+            var width = 800;
+            var height = 800;
+            var left = (screen.width / 2) - (width / 2);
+            var top = (screen.height / 2) - (height / 2);
+
+            // 팝업 열기
+            var popup = window.open(url, '_blank', `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes`);
+
+        }
+
+        const autoHyphen = (target) => {
+            target.value = target.value
+            .replace(/[^0-9]/g, '')
+            .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+        }
+
+    </script>
+</body>
+</html>
